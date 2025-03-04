@@ -1,0 +1,2426 @@
+{
+	"info": {
+		"_postman_id": "69b4d4ff-71fe-4d85-9f99-cd80df876f82",
+		"name": "GPMS",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29452937"
+	},
+	"item": [
+		{
+			"name": "Subject_Coordinator",
+			"item": [
+				{
+					"name": "Get All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "hsgbvysvh eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWM3MzAyODQwYzRhMThmOWIyNWMiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzkwMTg4NjEsImV4cCI6MTc0MTYxMDg2MX0.lqH-ulcKcL8lwcK7m7vjKy56Y6FB848LR1R-kE_dECI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getusers?usersfilter=all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getusers"
+							],
+							"query": [
+								{
+									"key": "usersfilter",
+									"value": "all"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Supervisor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzUzODIzNTUsImV4cCI6MTczNzk3NDM1NX0.tdgRQXUqSIAAArdgLtSp6XDf9PcI8Nf_RSeouD_5qVw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getusers?usersfilter=Admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getusers"
+							],
+							"query": [
+								{
+									"key": "usersfilter",
+									"value": "Admin"
+								},
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzUzODIzNTUsImV4cCI6MTczNzk3NDM1NX0.tdgRQXUqSIAAArdgLtSp6XDf9PcI8Nf_RSeouD_5qVw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getprofile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getprofile"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/getAlldoc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"getAlldoc"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/getAllProjects?Academic_year=2024-2025",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"getAllProjects"
+							],
+							"query": [
+								{
+									"key": "Academic_year",
+									"value": "2024-2025"
+								},
+								{
+									"key": "semester",
+									"value": "Semester",
+									"disabled": true
+								},
+								{
+									"key": "projectType",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Committees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/getcommittees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"getcommittees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Committee by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/getcommittees/679cd76340e011ad71326481",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"getcommittees",
+								"679cd76340e011ad71326481"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "review Feedback",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/reviewfeedback?status=Accepted&Academic_year=2024-2025&semester=Semester1&projectType=Graduation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"reviewfeedback"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Accepted"
+								},
+								{
+									"key": "Academic_year",
+									"value": "2024-2025"
+								},
+								{
+									"key": "semester",
+									"value": "Semester1"
+								},
+								{
+									"key": "projectType",
+									"value": "Graduation"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/TasksFilter?projectId=67806b136e91ee1d92f2e66b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"TasksFilter"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "67806b136e91ee1d92f2e66b"
+								},
+								{
+									"key": "status",
+									"value": "Not Started",
+									"disabled": true
+								},
+								{
+									"key": "studentAssignedTo",
+									"value": "67347f53e7dd6449682618a0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Task By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getTaskById/678335c1598b1ba23f09676e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getTaskById",
+								"678335c1598b1ba23f09676e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "project-activity-log",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNzM4NTI0MSwiZXhwIjoxNzM5OTc3MjQxfQ.mpqTCbeB2a1jT1THuCppZdnVjp9GrdZ7ATUse0CGq10",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/project-activity-log?repoName=2024-2025-Semester1-Graduation-Project-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"project-activity-log"
+							],
+							"query": [
+								{
+									"key": "repoName",
+									"value": "2024-2025-Semester1-Graduation-Project-1"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-02-01",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-02-28",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getNotifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getNotifications?هاد ما بدي يا بس عم جرب فيه الاشعارات اذا صحيحة كنت =",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getNotifications"
+							],
+							"query": [
+								{
+									"key": "recipient",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "projectId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "هاد ما بدي يا بس عم جرب فيه الاشعارات اذا صحيحة كنت ",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectProgress",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectProgress?projectId=677560e857c5bc860851c9d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectProgress"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectsProgressBySupervisors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/getProjectsProgressBySupervisors?academicYear=2024-2025&semester=Semester1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"getProjectsProgressBySupervisors"
+							],
+							"query": [
+								{
+									"key": "academicYear",
+									"value": "2024-2025"
+								},
+								{
+									"key": "semester",
+									"value": "Semester1"
+								},
+								{
+									"key": "projectType",
+									"value": "Graduation",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectDocuments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectDocuments?projectId=677560e857c5bc860851c9d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectDocuments"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\":\"admin@admin.com\",\r\n\"password\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"supervisor\",\r\n    \"username\":\"moamn-zak\",\r\n    \"email\":\"supervisor@supervisor.com\",\r\n    \"password\":\"supervisor\",\r\n    \"role\":\"Supervisor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addUser"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "create committees",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Evaluation Committee 1\",\r\n    \"evaluationPhase\": \"FinalEvaluation\",\r\n    \"members\": [\r\n        {\r\n            \"memberId\": \"6736ead92b861fd6445bc449\",\r\n            \"role\": \"Chair\"\r\n        },\r\n        {\r\n            \"memberId\": \"67364db70408c067260a4bd9\",\r\n            \"role\": \"Member\"\r\n        },\r\n        {\r\n            \"memberId\": \"673637aa229a4278d3868c8a\",\r\n            \"role\": \"Member\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/createcommittees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"createcommittees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduleCommittee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"committeeId\": \"679fd13f170099afc8cd3b1e\", \r\n    \"days\": [\"2024-11-28\", \"2024-11-29\"], \r\n    \"timeSlots\": [\r\n        { \"startTime\": \"09:00\", \"endTime\": \"12:00\" },\r\n        { \"startTime\": \"12:20\", \"endTime\": \"13:00\" }\r\n    ],\r\n    \"discussionDuration\": 5, \r\n    \"Academic_year\":\"2024-2025\",\r\n    \"semester\": \"Semester1\", \r\n    \"projectType\": \"Graduation\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/scheduleCommittee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"scheduleCommittee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "coordinato Decision",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"documentId\":\"676c112cdd2999f38b3e9f0c\",\r\n    \"status\":\"Accepted\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/coordinatorDecision",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"coordinatorDecision"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Project admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E4YjZmMjU3ZjQxNDEwMWRiNWU3NmUiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3NDA3Njc1NzUsImV4cCI6MTc0MzM1OTU3NX0.XydLw-LYe-5_RMG2RF67GNfMxvinHsWqgwYdH81yHPQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\": \"Project 2\",\r\n    \"description\": \"A project focused on software development for graduates\",\r\n    \"startDate\": \"2024-10-01\",\r\n    \"endDate\": \"2025-06-01\",\r\n    \"Academic_year\":\"2024-2025\",\r\n    \"semester\": \"Semester1\",\r\n    \"projectType\": \"Graduation\", // أو \"Quarterly\"\r\n    \"supervisorId\": \"67aa7ddb5757bce2db4227b2\"\r\n// نحن بحاجة اي دي المشرف لان الادمن الي عم بيضيف المشروع \r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addProject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addProject"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "addStudentsToProject admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\": \"67c2017e7d4c9cfa72ec4bf6\",\r\n    \"students\": [\r\n        {\r\n            \"studentId\": \"67aa7d985757bce2db4227a9\",\r\n            \"roleInProject\": \"Team Leader\"\r\n        },\r\n        {\r\n            \"studentId\": \"67a8b79d57f414101db5e77a\",\r\n            \"roleInProject\": \"Member\"\r\n        },\r\n        {\r\n            \"studentId\": \"67a8b79d57f414101db5e77a\",\r\n            \"roleInProject\": \"Member\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addStudentsToProject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addStudentsToProject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzUzNzQ1MTcsImV4cCI6MTczNzk2NjUxN30.la46JQXqDBF4JtsuRhf1pqLTxZTmEowg4E1WmJQt5xk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"projectId\":\"6762cdaa8bf7267357165531\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD user\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/createtask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"createtask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "In Or Activate user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzU1NzI4MzMsImV4cCI6MTczODE2NDgzM30.udBtVpy4aSCr4NLIakiXr56751MuUkGoxONaOIWu5GA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"676fd84b697cba64c77da623\",\r\n    \"status\":\"Inactive\"\r\n\r\n    //\"status\":\"Active\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/InOrActivateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"InOrActivateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DocumentSubmission Notification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"SubmissionDate\": \"2025-03-28\", \r\n    \"content\": \"meting in the hole  for all students and supervisor on  \"//,\r\n    \r\n    // \"Academic_year\":\"2024-2025\",\r\n    // \"semester\": \"Semester1\", \r\n    // \"projectType\": \"Graduation\"\r\n\r\n  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/DocumentSubmissionNotification",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"DocumentSubmissionNotification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserInfo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n// \"userId\":\"\",\r\n    \"name\":\"Supervisor\",\r\n    \"username\":\"Supervisor123\",\r\n    \"email\":\"supervisor@supervisor.com\",\r\n    \"password\":\"supervisor\",\r\n    \"role\":\"Supervisor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/updateUserInfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"updateUserInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit committees",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"committeeId\":\"673462292c6f1229be912be8\",\r\n    \"name\": \"Evaluation Committee 1\",\r\n    \"evaluationPhase\": \"FinalEvaluation\",\r\n    \"members\": [\r\n        {\r\n            \"memberId\": \"6736ead92b861fd6445bc449\",\r\n            \"role\": \"Chair\"\r\n        },\r\n        {\r\n            \"memberId\": \"67364db70408c067260a4bd9\",\r\n            \"role\": \"Member\"\r\n        },\r\n        {\r\n            \"memberId\": \"673637aa229a4278d3868c8a\",\r\n            \"role\": \"Member\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Subject_Coordinator/editcommittees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Subject_Coordinator",
+								"editcommittees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzUzNzQ1MTcsImV4cCI6MTczNzk2NjUxN30.la46JQXqDBF4JtsuRhf1pqLTxZTmEowg4E1WmJQt5xk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"taskId\":\"67727dd3a50d694815d732a9\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD user\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/updateTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"updateTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRjMGU3ZGQ2NDQ5NjgyNjE4OGQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MzUzNzQ1MTcsImV4cCI6MTczNzk2NjUxN30.la46JQXqDBF4JtsuRhf1pqLTxZTmEowg4E1WmJQt5xk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/deleteTask/67727dd3a50d694815d732a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"deleteTask",
+								"67727dd3a50d694815d732a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supervisor",
+			"item": [
+				{
+					"name": "Get Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNzM4NTI0MSwiZXhwIjoxNzM5OTc3MjQxfQ.mpqTCbeB2a1jT1THuCppZdnVjp9GrdZ7ATUse0CGq10",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getusers?usersfilter=Supervisor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getusers"
+							],
+							"query": [
+								{
+									"key": "usersfilter",
+									"value": "Supervisor"
+								},
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "project-activity-log",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNzM4NTI0MSwiZXhwIjoxNzM5OTc3MjQxfQ.mpqTCbeB2a1jT1THuCppZdnVjp9GrdZ7ATUse0CGq10",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/project-activity-log?repoName=2024-2025-Semester1-Graduation-Project-test-Student8&startDate=2025-01-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"project-activity-log"
+							],
+							"query": [
+								{
+									"key": "repoName",
+									"value": "2024-2025-Semester1-Graduation-Project-test-Student8"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-25"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-01-28",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODY4OTUxOSwiZXhwIjoxNzQxMjgxNTE5fQ.Yy9FDyklBShtLCSKnD9qW67JyJyIvRaWGAu6aRUKBsA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getprofile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getprofile"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getSupervisorProjects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNzM4NTI0MSwiZXhwIjoxNzM5OTc3MjQxfQ.mpqTCbeB2a1jT1THuCppZdnVjp9GrdZ7ATUse0CGq10",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/Supervisor/getSupervisorProjects?Academic_year=2024-2025",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Supervisor",
+								"getSupervisorProjects"
+							],
+							"query": [
+								{
+									"key": "Academic_year",
+									"value": "2024-2025"
+								},
+								{
+									"key": "semester",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "projectType",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectWithStudents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Supervisor/getProjectWithStudents/6794dbb75079ab8135d40977",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Supervisor",
+								"getProjectWithStudents",
+								"6794dbb75079ab8135d40977"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/TasksFilter?projectId=6762cdaa8bf7267357165531&status=Not Started",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"TasksFilter"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "6762cdaa8bf7267357165531"
+								},
+								{
+									"key": "status",
+									"value": "Not Started"
+								},
+								{
+									"key": "studentAssignedTo",
+									"value": "67347f53e7dd6449682618a0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Task By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getTaskById/67727dd3a50d694815d732a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getTaskById",
+								"67727dd3a50d694815d732a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getNotifications?recipient=678067e1ecf855ce4c7e3df4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getNotifications"
+							],
+							"query": [
+								{
+									"key": "recipient",
+									"value": "678067e1ecf855ce4c7e3df4"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectProgress",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectProgress?projectId=67aa85ebe7cf74797189d6a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectProgress"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "67aa85ebe7cf74797189d6a0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectsProgress For Supervisor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/supervisor/getProjectsProgressForSupervisor?academicYear=2024-2025&semester=Semester1&projectType=Graduation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supervisor",
+								"getProjectsProgressForSupervisor"
+							],
+							"query": [
+								{
+									"key": "academicYear",
+									"value": "2024-2025"
+								},
+								{
+									"key": "semester",
+									"value": "Semester1"
+								},
+								{
+									"key": "projectType",
+									"value": "Graduation"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectDocuments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectDocuments?projectId=67c1f8e5db1732fe9da76a19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectDocuments"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "67c1f8e5db1732fe9da76a19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation Receive",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sender\":\"67a8b75457f414101db5e775\",\r\n    \"projectId\":\"67afd197c56cda9fa2ff17c6\",\r\n    \"content\":\"CRUD user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/conversationReceive?projectId=67afd197c56cda9fa2ff17c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"conversationReceive"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "67afd197c56cda9fa2ff17c6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\":\"supervisor@supervisor.com\",\r\n\"password\":\"supervisor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"user\",\r\n    \"username\":\"BaraaAlbenni\",\r\n    \"email\":\"user@user.com\",\r\n    \"password\":\"user\",\r\n    \"role\":\"Student\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addUser"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "add Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E4Yjc1NDU3ZjQxNDEwMWRiNWU3NzUiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTc0MDc2NTM4MSwiZXhwIjoxNzQzMzU3MzgxfQ.PJsM_gdkqJYhsa7Ul20VMR1PZnro3SV_MF9W_jBnUok",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\": \"Project 1\",\r\n    \"description\": \"A project focused on software development for graduates\",\r\n    \"startDate\": \"2024-10-01\",\r\n    \"endDate\": \"2025-06-01\",\r\n    \"Academic_year\":\"2024-2025\",\r\n    \"semester\": \"Semester1\",\r\n    \"projectType\": \"Graduation\" // أو \"Quarterly\"\r\n}\r\n//وقت بكون الي عم يضيف المشروع مشرف ما منحتاج نبعت حقل السوبرفايزور اي دي \r\n//\"supervisorId\": \"643e6c9f1a3e9b6b9e98f123\",\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addProject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addProject"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "addStudentsToProject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\": \"67c1f8e5db1732fe9da76a19\",\r\n    \"students\": [\r\n        {\r\n            \"studentId\": \"67aa7d985757bce2db4227a9\",\r\n            \"roleInProject\": \"Team Leader\"\r\n        },\r\n        {\r\n            \"studentId\": \"67a8b79d57f414101db5e77a\",\r\n            \"roleInProject\": \"Member\"\r\n        },\r\n        {\r\n            \"studentId\": \"67a8b79d57f414101db5e77a\",\r\n            \"roleInProject\": \"Member\"\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/addStudentsToProject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"addStudentsToProject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "feedback",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczOTAyMDQ0MywiZXhwIjoxNzQxNjEyNDQzfQ.CWUy9ktteYUeT_zrf2Ngr_gDSeEUoFJntSydp8fbG3I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"projectId\":\"679ce14dff4502a1b2becf92\",\r\n\"content\":\"test 1test 2\",\r\n\"documentId\":\"67a75f7488653aad0294f72a\",\r\n\"status\":\"Accepted\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Supervisor/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Supervisor",
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\":\"6762cdaa8bf7267357165531\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD user\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/createtask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"createtask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation Send",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"sender\":\"67a8b75457f414101db5e775\",\r\n    \"projectId\":\"67afd197c56cda9fa2ff17c6\",\r\n    \"content\":\"CRUD user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/conversationSend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"conversationSend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserInfo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"userId\":\"\",\r\n    // \"name\":\"user ail\",\r\n    \"username\":\"Ibrahi-Usama-Alzamil\",\r\n    \"email\":\"ibrahem@gmail.com\"//,\r\n    // \"password\":\"user\",\r\n    // \"role\":\"Student\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/updateUserInfo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"updateUserInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taskId\":\"67727dd3a50d694815d732a9\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD u\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/updateTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"updateTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/deleteTask/67727dd3a50d694815d732a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"deleteTask",
+								"67727dd3a50d694815d732a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "get team",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzljZGZlZmZmNDUwMmExYjJiZWNmODMiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczODMzNDM1MSwiZXhwIjoxNzQwOTI2MzUxfQ.z7BNjdWeTlred4f-7epMproozpK5yArCIK4VIphR_B4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getusers?usersfilter=Student&projectId=677560e857c5bc860851c9d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getusers"
+							],
+							"query": [
+								{
+									"key": "usersfilter",
+									"value": "Student"
+								},
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzljZGZlZmZmNDUwMmExYjJiZWNmODMiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczODMzNDM1MSwiZXhwIjoxNzQwOTI2MzUxfQ.z7BNjdWeTlred4f-7epMproozpK5yArCIK4VIphR_B4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getprofile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks Filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/TasksFilter?projectId=6762cdaa8bf7267357165531&status=Not Started",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"TasksFilter"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "6762cdaa8bf7267357165531"
+								},
+								{
+									"key": "status",
+									"value": "Not Started"
+								},
+								{
+									"key": "studentAssignedTo",
+									"value": "67347f53e7dd6449682618a0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Task By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getTaskById/67727dd3a50d694815d732a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getTaskById",
+								"67727dd3a50d694815d732a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Student Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzljZGZlZmZmNDUwMmExYjJiZWNmODMiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczODY4OTYzNywiZXhwIjoxNzQxMjgxNjM3fQ.ATFELmA49Aivm95undNq7habk259Y_7iZb1gVSrbW4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/Student/getStudentProjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Student",
+								"getStudentProjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "project-activity-log",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearor eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNzM4NTI0MSwiZXhwIjoxNzM5OTc3MjQxfQ.mpqTCbeB2a1jT1THuCppZdnVjp9GrdZ7ATUse0CGq10",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/project-activity-log?repoName=2024-2025-Semester1-Graduation-Project-test-Student8&startDate=2025-01-25&endDate=2025-01-28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"project-activity-log"
+							],
+							"query": [
+								{
+									"key": "repoName",
+									"value": "2024-2025-Semester1-Graduation-Project-test-Student8"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-25"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-01-28"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectProgress",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectProgress?projectId=677560e857c5bc860851c9d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectProgress"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/common/getNotifications?projectId=679ce14dff4502a1b2becf92",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getNotifications"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "679ce14dff4502a1b2becf92"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "getProjectDocuments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beror eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzc1NWQ3NTU3YzViYzg2MDg1MWM5Y2QiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczODQyMDE0OSwiZXhwIjoxNzQxMDEyMTQ5fQ.pFw4K355bZXwbzEkn4a4U4EqyEybpxF50IoGyFwHjoU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/getProjectDocuments?projectId=677560e857c5bc860851c9d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"getProjectDocuments"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "677560e857c5bc860851c9d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation Receive",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sender\":\"67a8b75457f414101db5e775\",\r\n    \"projectId\":\"67afd197c56cda9fa2ff17c6\",\r\n    \"content\":\"CRUD user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/conversationReceive?projectId=67afd197c56cda9fa2ff17c6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"conversationReceive"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": "67afd197c56cda9fa2ff17c6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\":\"userali@user.com\",\r\n\"password\":\"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Common/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Common",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload File",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzljZGZlZmZmNDUwMmExYjJiZWNmODMiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczOTAyMjA5OSwiZXhwIjoxNzQxNjE0MDk5fQ.9zJRY0m9ozIN9HK2mnskvSqgSV1OOfc3mvLfin20gik",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "projectId",
+									"value": "679ce14dff4502a1b2becf92",
+									"type": "text"
+								},
+								{
+									"key": "documentType",
+									"value": "Proposal",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/MOAMN/Desktop/ملفات المشروع/صور للبرزنتيشن/da6de76b-6516-475a-a1a9-b1fa10b41308.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Student/uploadfile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Student",
+								"uploadfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0N2Y1M2U3ZGQ2NDQ5NjgyNjE4YTAiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczNTI5Mjg4OCwiZXhwIjoxNzM3ODg0ODg4fQ.Y01jERgkLNDO7AXjS7yM77Y7O1JAbPSQ5L2DF7Decp0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectId\":\"6762cdaa8bf7267357165531\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD user\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/createtask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"createtask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation Send",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0NzRmNWU3ZGQ2NDQ5NjgyNjE4OTMiLCJyb2xlIjoiU3VwZXJ2aXNvciIsImlhdCI6MTczNTI5NTU2MiwiZXhwIjoxNzM3ODg3NTYyfQ.a4ITdsQgxEuxWQNJJEhkIn1mFO8_c4mJNNGvE_52flo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"sender\":\"67a8b75457f414101db5e775\",\r\n    \"projectId\":\"67afd197c56cda9fa2ff17c6\",\r\n    \"content\":\"CRUD user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/conversationSend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"conversationSend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0N2Y1M2U3ZGQ2NDQ5NjgyNjE4YTAiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczNTI5Mjg4OCwiZXhwIjoxNzM3ODg0ODg4fQ.Y01jERgkLNDO7AXjS7yM77Y7O1JAbPSQ5L2DF7Decp0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taskId\":\"67727dd3a50d694815d732a9\",\r\n    \"studentAssignedTo\":\"67347f53e7dd6449682618a0\",\r\n    \"title\":\"CRUD user\",\r\n    \"description\":\"create user crud\",\r\n    \"dueDate\":\"2025-01-08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/common/updateTask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"updateTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM0N2Y1M2U3ZGQ2NDQ5NjgyNjE4YTAiLCJyb2xlIjoiU3R1ZGVudCIsImlhdCI6MTczNTI5Mjg4OCwiZXhwIjoxNzM3ODg0ODg4fQ.Y01jERgkLNDO7AXjS7yM77Y7O1JAbPSQ5L2DF7Decp0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/common/deleteTask/67727dd3a50d694815d732a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"common",
+								"deleteTask",
+								"67727dd3a50d694815d732a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
