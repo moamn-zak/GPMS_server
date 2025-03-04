@@ -382,7 +382,7 @@ exports.createTask = async (req, res) => {
                 return res.status(400).json({ message: "not authoraized." });
             }
         }
-        const studentAssignedTo = await User.findById(studentAssignedTo);
+        const studentTo = await User.findById(studentAssignedTo);
 
         // إنشاء مهمة جديدة
         const newTask = new Task({
@@ -398,7 +398,7 @@ exports.createTask = async (req, res) => {
         let title, content;
         title = 'Task created';
         content = `A ${title} task Assigned to you.`
-        await this.Notification(studentAssignedTo.fcmToken, studentAssignedTo, projectId, title, content);
+        await this.Notification(studentTo.fcmToken, studentAssignedTo, projectId, title, content);
 
         res.status(201).json({ message: "Task created successfully.", task: newTask });
 
