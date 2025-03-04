@@ -75,9 +75,9 @@ const storage = multer.diskStorage({
         const fileType = file.mimetype.split('/')[0];
         
         if (fileType === 'image') {
-            destinationFolder = 'images';
+            destinationFolder = 'uploads';
         } else if (['application'].includes(fileType)) {
-            destinationFolder = 'documents';
+            destinationFolder = 'uploads';
         } else {
             return cb(new Error('Unsupported file type!'), false);
         }
