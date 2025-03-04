@@ -60,7 +60,7 @@ exports.login = async (req, res, next) => {
         }
 
         if (!fcmtoken) {
-            return res.status(401).json({ message: 'FCMtoken required.' });
+            return res.status(401).json({ message: 'fcmtoken required.' });
         }
         const token = jwt.sign(
             { userId: user._id, role: user.role },

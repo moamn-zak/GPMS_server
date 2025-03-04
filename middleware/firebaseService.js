@@ -1,35 +1,51 @@
 require('dotenv').config();
 
-const firebase = require('firebase-admin');
+const admin = require('firebase-admin');
 const path = require('path');
 
 const User = require('../models/User');
 
-// const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
+// const serviceAccount = require("C:/Users/MOAMN/Desktop/GPMS_server/firebase_kay/gpms-aspu-firebase-adminsdk-fbsvc-9e7b095e6d.json");
 
-// const serviceAccount = require(path.resolve(`C:\\Users\\ASUS\\Desktop\\GPMS\\GPMS_server\\firebase_kay\\${process.env.FIREBASE_SERVICE_ACCOUNT}`));
 const serviceAccount = require('/etc/secrets/firebase_key.json');
 
 
 
-// $env:GOOGLE_APPLICTION_CREDENTIALS="C:\Users\ASUS\Desktop\GPMS\GPMS_server\firebase_kay\gpms-aspu-firebase-adminsdk-fbsvc-9e7b095e6d.json"
-
-
-firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
-    // databaseURL: 'https://<project-id>.firebaseio.com' // تأكد من استبدال <project-id> بمعرف مشروعك
-});
+exports.fire = () => {
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+    });
+    // console.log("✅ Firebase Admin Initialized Successfully!");
+};
 
 exports.sendNotification = async (token, title, content) => {
+    // const message = {
+    //     notification: {
+    //         title: title,
+    //         content: content,
+    //     }
+    // };
     const message = {
+        token: token, // التوكن الخاص بالمستلم
         notification: {
             title: title,
-            content: content,
+            body: content // يجب أن يكون `body` بدلاً من `content`
+        },
+        android: {
+            priority: "high"
+        },
+        apns: {
+            payload: {
+                aps: {
+                    sound: "default"
+                }
+            }
         }
     };
-
-    await firebase.messaging().sendToDevice(token, message)
+    console.log(message);
+    // await admin.messaging().sendToDevice(token, message)
+    await admin.messaging().send(message)
         .then((response) => {
             console.log('Successfully sent message:', response);
         })

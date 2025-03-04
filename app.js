@@ -67,6 +67,14 @@ mongoose.connect(MONGODB_URI)
             console.log('Socket.IO initialized');
 
         });
+        setImmediate(() => {
+            require('./middleware/firebaseService').fire();
+            console.log('firebaseService initialized');
+
+        });
+
+
+
     })
     .catch(err => {
         console.error('Error connecting :', err);

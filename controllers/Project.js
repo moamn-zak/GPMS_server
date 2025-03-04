@@ -30,7 +30,7 @@ exports.Notification = async (fcmtoken, recipient, projectId, title, content) =>
         await notification.save();
 
         // ✅ إرسال الإشعار إذا كان هناك `token` صالح
-        if (fcmtoken!=null) {
+        if (fcmtoken != null) {
             // ✅ تأكد من تفعيل دالة sendNotification() قبل الاستخدام
             await sendNotification(fcmtoken, title, content);
             console.log(`📢 Notification sent to user: ${recipient}, Title: ${title}`);
@@ -74,11 +74,11 @@ exports.uploadFile = async (req, res) => {
                 path: 'projectId',
                 populate: {
                     path: 'supervisor',
-                    select: '_id name username email fcmTocken' // تحديد الحقول المطلوبة فقط من المشرف
+                    select: '_id name username email fcmToken' // تحديد الحقول المطلوبة فقط من المشرف
                 }
             });
 
-        // console.log('project: ' + project.projectId);
+        console.log('project: ' + project.projectId);
 
         if (!project || !project.students) {              //|| !project.projectId.DocumentSubmissionDate
             clearFile(filePath);
@@ -117,9 +117,9 @@ exports.uploadFile = async (req, res) => {
         let title, content;
         title = 'File Uploaded';
         content = `a ${documentType} file uploded to ${project.projectId.projectName} project.`
-        // console.log("project.supervisor.fcmTocken", project.projectId.supervisor._id.toString(), project.projectId._id.toString(), title, content);
+        // console.log(project.projectId.supervisor.fcmToken, project.projectId.supervisor._id.toString(), project.projectId._id.toString(), title, content);
 
-        await this.Notification(project.supervisor.fcmTocken, project.projectId.supervisor._id, project.projectId, title, content);
+        await this.Notification(project.projectId.supervisor.fcmToken, project.projectId.supervisor._id, project.projectId, title, content);
         res.status(200).json({ message: "Document created successfully.", document });
     } catch (error) {
         clearFile(filePath);
@@ -315,7 +315,7 @@ exports.coordinatorDecision = async (req, res) => {
                 path: 'projectId',
                 populate: {
                     path: 'supervisor',
-                    select: '_id name username email fcmTocken' // تحديد الحقول المطلوبة فقط من المشرف
+                    select: '_id name username email fcmToken' // تحديد الحقول المطلوبة فقط من المشرف
                 }
             });
 
@@ -330,7 +330,7 @@ exports.coordinatorDecision = async (req, res) => {
         let title, content;
         title = 'Feedback review';
         content = `Subject cordinator ${status} file uploded of ${document.projectId.projectName} project.`
-        await this.Notification(document.projectId.supervisor.fcmTocken, document.projectId.supervisor._id, document.projectId, title, content);
+        await this.Notification(document.projectId.supervisor.fcmToken, document.projectId.supervisor._id, document.projectId, title, content);
 
 
 
@@ -398,7 +398,7 @@ exports.createTask = async (req, res) => {
         let title, content;
         title = 'Task created';
         content = `A ${title} task Assigned to you.`
-        await this.Notification(studentAssignedTo.fcmTocken, studentAssignedTo, projectId, title, content);
+        await this.Notification(studentAssignedTo.fcmToken, studentAssignedTo, projectId, title, content);
 
         res.status(201).json({ message: "Task created successfully.", task: newTask });
 
@@ -504,7 +504,7 @@ exports.updateTask = async (req, res) => {
         let title, content;
         title = 'Task Updated';
         content = `A ${title} task updated.`
-        await this.Notification(AssignedTo.fcmTocken, AssignedTo._id, task.projectId, title, content);
+        await this.Notification(AssignedTo.fcmToken, AssignedTo._id, task.projectId, title, content);
 
 
         res.status(200).json({ message: "Task updated successfully.", task });
@@ -543,7 +543,7 @@ exports.deleteTask = async (req, res) => {
         let title, content;
         title = 'Task Deleted';
         content = `A ${title} task deleted.`
-        await this.Notification(AssignedTo.fcmTocken, AssignedTo._id, task.projectId, title, content);
+        await this.Notification(AssignedTo.fcmToken, AssignedTo._id, task.projectId, title, content);
 
         res.status(200).json({ message: "Task deleted successfully." });
     } catch (error) {

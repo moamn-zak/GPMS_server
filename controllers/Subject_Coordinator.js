@@ -127,7 +127,7 @@ exports.updateCommittee = async (req, res) => {
                 let title, content;
                 title = 'Added to Committee';
                 content = `you were added to a ${name} commitee for ${evaluationPhase}.`
-                Notification(memberAssignedTo.fcmTocken, member.memberId, null, title, content);
+                Notification(memberAssignedTo.fcmToken, member.memberId, null, title, content);
 
             });
         }
