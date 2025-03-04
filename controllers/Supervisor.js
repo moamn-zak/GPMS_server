@@ -289,7 +289,7 @@ exports.getNotifications = async (req, res) => {
         const { recipient, projectId, limit = 50, page = 1 } = req.query;
         let filter = {};
 
-        if (recipient) filter.recipient = recipient;
+        if (req.role==="Supervisor") filter.recipient = req.userId;
         if (projectId) filter.projectId = projectId;
 
         // ✅ جلب الإشعارات حسب الفلتر المحدد + تقسيم إلى صفحات
