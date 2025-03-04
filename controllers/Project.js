@@ -395,8 +395,8 @@ exports.createTask = async (req, res) => {
 
         await newTask.save();
 
-        let title, content;
-        title = 'Task created';
+        let titleN, content;
+        titleN = 'Task created';
         content = `A ${title} task Assigned to you.`
         await this.Notification(studentTo.fcmToken, studentAssignedTo, projectId, title, content);
 
