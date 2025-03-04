@@ -58,7 +58,7 @@ exports.uploadFile = async (req, res) => {
         const { projectId, documentType } = req.body;
 
         if (req.file) {
-            filePath = `/files/${req.file.destinationFolder}/${req.file.filename}`;
+            filePath = `/tmp/${req.file.destinationFolder}/${req.file.filename}`;
         }
 
         if (!req.file || !projectId || !documentType || filePath === ' ') {
