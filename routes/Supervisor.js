@@ -33,6 +33,9 @@ router.get('/getProjectWithStudents/:projectId', supervisorController.getProject
 
 router.get('/getProjectsProgressForSupervisor', isauth, projectController.getProjectsProgressForSupervisor);
 
+router.get('/getNotifications', isauth, supervisorController.getNotifications);
+
+
 
 router.put('/updateUserInfo', userController.updateUserInfo);
 

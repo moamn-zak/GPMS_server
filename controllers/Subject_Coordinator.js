@@ -219,8 +219,9 @@ exports.getAllProjects = async (req, res) => {
 // تابع لجلب جميع الجداول
 exports.getSchedules = async (req, res) => {
     try {
+        const { committeeId } = req.query;
 
-        const schedules = await DiscussionSchedule.find().sort({ createdAt: -1 }); // جلب جميع المشاريع من قاعدة البيانات
+        const schedules = await DiscussionSchedule.find({ committeeId: committeeId }).sort({ createdAt: -1 }); // جلب جميع المشاريع من قاعدة البيانات
         res.status(200).json({ success: true, schedules: schedules });
 
     } catch (error) {
@@ -466,7 +467,7 @@ exports.scheduleNotification = async (committeeId, schedule, days, timeSlots) =>
         }
 
         // ✅ جلب بيانات اللجنة والتحقق من وجودها
-        const committee = await CommitteeMember.findById(committeeId);
+        const committee = await CommitteeMember.findOne({ committeeId: committeeId });
         if (!committee) {
             console.log(`⚠️ Committee with ID ${committeeId} not found.`);
             return { success: false, message: "Committee not found." };

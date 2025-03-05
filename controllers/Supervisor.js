@@ -32,7 +32,7 @@ exports.addProject = async (req, res) => {
             projectType
         });
 
-        console.log(`Creating project: ${newProject.projectName}`);
+        // console.log(`Creating project: ${newProject.projectName}`);
 
         // حفظ المشروع في قاعدة البيانات
         await newProject.save({ session });
@@ -234,7 +234,7 @@ exports.getProjectWithStudents = async (req, res) => {
             .populate('projectId') // ربط الـ projectId بمعلومات المشروع
             .populate('students.studentId', 'name username email') // ربط الـ studentId بمعلومات الطالب (الاسم والبريد الإلكتروني)
             .select('-students._id '); // حذف الـ _id من داخل الطلاب
-        console.log(projectWithStudents);
+        // console.log(projectWithStudents);
         if (!projectWithStudents) {
             return res.status(404).json({ message: 'Project not found' });
         }
@@ -289,7 +289,42 @@ exports.getNotifications = async (req, res) => {
         const { recipient, projectId, limit = 50, page = 1 } = req.query;
         let filter = {};
 
-        if (req.role==="Supervisor") filter.recipient = req.userId;
+        if (req.role === "Supervisor") filter.recipient = req.userId;
+        if (projectId) filter.projectId = projectId;
+
+        // ✅ جلب الإشعارات حسب الفلتر المحدد + تقسيم إلى صفحات
+        const notifications = await NotificationModel.find(filter)
+            .sort({ createdAt: -1 })
+        // .limit(parseInt(limit))
+        // .skip((parseInt(page) - 1) * parseInt(limit));
+
+        res.status(200).json({
+            success: true,
+            total: notifications.length,
+            // page: parseInt(page),
+            // limit: parseInt(limit),
+            notifications
+        });
+
+    } catch (error) {
+        console.error("❌ Error fetching notifications:", error.message);
+        res.status(500).json({
+            success: false,
+            message: "Error fetching notifications",
+            error: error.message
+        });
+    }
+};
+
+
+
+
+exports.getProNotifications = async (req, res) => {
+    try {
+        const { projectId, limit = 50, page = 1 } = req.query;
+        let filter = {};
+
+
         if (projectId) filter.projectId = projectId;
 
         // ✅ جلب الإشعارات حسب الفلتر المحدد + تقسيم إلى صفحات

@@ -46,7 +46,7 @@ router.get('/project-activity-log', octokitController.getProjectActivityLog);
 
 router.get('/getProjectProgress', projectController.getProjectProgress);
 
-router.get('/getNotifications',isauth,  supervisorController.getNotifications);
+router.get('/getNotifications', supervisorController.getProNotifications);
 
 router.get('/conversationReceive', ConversationController.conversationReceive);
 

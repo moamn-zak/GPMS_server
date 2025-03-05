@@ -78,7 +78,7 @@ exports.uploadFile = async (req, res) => {
                 }
             });
 
-        console.log('project: ' + project.projectId);
+        // console.log('project: ' + project.projectId);
 
         if (!project || !project.students) {              //|| !project.projectId.DocumentSubmissionDate
             clearFile(filePath);
@@ -742,8 +742,8 @@ exports.getProjectsProgressForSupervisor = async (req, res) => {
             }
 
             let totalTasks = tasks.length;
-            let completedTasks = tasks.filter(task => task.status === "completed").length;
-            let inProgressTasks = tasks.filter(task => task.status === "inProgress").length;
+            let completedTasks = tasks.filter(task => task.status === "Completed").length;
+            let inProgressTasks = tasks.filter(task => task.status === "In Progress").length;
 
             // حساب نسبة إنجاز المشروع
             let projectCompletionRate = ((completedTasks + (inProgressTasks * 0.5)) / totalTasks) * 100;
@@ -792,10 +792,12 @@ exports.getProjectsProgressBySupervisors = async (req, res) => {
         if (!academicYear || !semester) {
             return res.status(400).json({ success: false, message: "Academic Year and Semester are required" });
         }
+
         let filter = {};
         filter.Academic_year = academicYear;
         filter.semester = semester;
         if (projectType) filter.projectType = projectType;
+
         // جلب جميع المشاريع المطابقة للسنة والفصل الدراسي مع المشرفين
         const projects = await Project.find(filter).populate("supervisor", "name");
 
@@ -823,8 +825,8 @@ exports.getProjectsProgressBySupervisors = async (req, res) => {
             }
 
             let totalTasks = tasks.length;
-            let completedTasks = tasks.filter(task => task.status === "completed").length;
-            let inProgressTasks = tasks.filter(task => task.status === "inProgress").length;
+            let completedTasks = tasks.filter(task => task.status === "Completed").length;
+            let inProgressTasks = tasks.filter(task => task.status === "In Progress").length;
 
             // حساب نسبة إنجاز المشروع
             let projectCompletionRate = ((completedTasks + (inProgressTasks * 0.5)) / totalTasks) * 100;

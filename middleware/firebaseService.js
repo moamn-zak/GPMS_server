@@ -43,11 +43,12 @@ exports.sendNotification = async (token, title, content) => {
             }
         }
     };
-    console.log(message);
+    // console.log(message);
     // await admin.messaging().sendToDevice(token, message)
     await admin.messaging().send(message)
         .then((response) => {
-            console.log('Successfully sent message:', response);
+            // console.log('Successfully sent message:', response);
+            console.log('Successfully sent message:');
         })
         .catch((error) => {
             console.log('Error sending message:', error);
