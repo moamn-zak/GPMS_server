@@ -216,12 +216,34 @@ exports.getAllProjects = async (req, res) => {
 
 
 
+// // تابع لجلب جميع الجداول
+// exports.getSchedules = async (req, res) => {
+//     try {
+//         const { committeeId } = req.query;
+
+//         const schedules = await DiscussionSchedule.find({ committeeId: committeeId }).populate({
+//             path
+//         }).sort({ createdAt: -1 }); // جلب جميع المشاريع من قاعدة البيانات
+//         res.status(200).json({ success: true, schedules: schedules });
+
+//     } catch (error) {
+//         res.status(500).json({ success: false, message: 'Error fetching schedules', error });
+//     }
+// };
+
+
 // تابع لجلب جميع الجداول
 exports.getSchedules = async (req, res) => {
     try {
         const { committeeId } = req.query;
 
-        const schedules = await DiscussionSchedule.find({ committeeId: committeeId }).sort({ createdAt: -1 }); // جلب جميع المشاريع من قاعدة البيانات
+        const schedules = await DiscussionSchedule.find({ committeeId: committeeId })
+            .populate({
+                path: 'schedule.projectId',
+                select: 'projectName' // استرجاع اسم المشروع فقط
+            })
+            .sort({ createdAt: -1 });
+
         res.status(200).json({ success: true, schedules: schedules });
 
     } catch (error) {
